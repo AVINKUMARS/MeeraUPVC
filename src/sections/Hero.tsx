@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Phone, MessageCircle, ArrowRight, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = '919901065174'; // Official WhatsApp number
 const WHATSAPP_MESSAGE = 'Hello! I would like to get a free consultation for UPVC windows/doors.';
