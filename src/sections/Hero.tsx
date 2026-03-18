@@ -11,10 +11,19 @@ export function Hero() {
 
   useEffect(() => {
     setIsLoaded(true);
+    let ticking = false;
+    
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -48,8 +57,8 @@ export function Hero() {
         <img
           src="/images/hero_lifestyle.jpg"
           alt="Elegant lifestyle in a luxury UPVC interior"
-          className="w-full h-full object-cover scale-110"
-          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+          className="w-full h-full object-cover scale-110 will-change-transform"
+          style={{ transform: `translate3d(0, ${scrollY * 0.2}px, 0)` }}
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/40" />
